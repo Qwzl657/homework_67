@@ -17,8 +17,6 @@ window.addEventListener('load', function () {
     xhr.onload = function () {
         const data = JSON.parse(this.response);
 
-        document.title = data.name;
-
         const title = document.createElement('h1');
         title.innerHTML = data.name;
         detail.append(title);
