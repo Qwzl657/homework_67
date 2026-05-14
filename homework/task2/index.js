@@ -1,6 +1,6 @@
 'use strict';
 
-window.onload = function () {
+window.addEventListener('load', function () {
 
     const pokemonList = document.getElementById('pokemon-list');
 
@@ -27,4 +27,4 @@ window.onload = function () {
     xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon');
     xhr.send();
 
-};
+});

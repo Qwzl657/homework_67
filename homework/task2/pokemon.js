@@ -1,16 +1,23 @@
 'use strict';
 
-window.onload = function () {
+window.addEventListener('load', function () {
 
     const urlParams = new URLSearchParams(window.location.search);
     const pokemonName = urlParams.get('name');
 
     const detail = document.getElementById('pokemon-detail');
 
+    if (!pokemonName) {
+        detail.innerHTML = '<p>Покемон не выбран</p>';
+        return;
+    }
+
     const xhr = new XMLHttpRequest();
 
     xhr.onload = function () {
         const data = JSON.parse(this.response);
+
+        document.title = data.name;
 
         const title = document.createElement('h1');
         title.innerHTML = data.name;
@@ -44,4 +51,4 @@ window.onload = function () {
     xhr.open('GET', 'https://pokeapi.co/api/v2/pokemon/' + pokemonName);
     xhr.send();
 
-};
+});
